@@ -35,7 +35,10 @@ type HistoryElement = {
 const MainAppShell = () => {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
-  const [colorScheme, setColorScheme] = useState<ColorScheme>("dark");
+  const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
+    key: "theme",
+    defaultValue: "dark",
+  });
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
 
