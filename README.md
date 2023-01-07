@@ -2,7 +2,7 @@
 
 ## Deployment
 This app is being deployed using Netlify  
-Link to app: https://sparkly-truffle-dc29a9.netlify.app/
+Link to app: https://expense-tracker-react-ts-app.netlify.app
 
 ## Motivation Behind Project 
 As a university student it is very important to be able to keep track of where I am spending my money. Many of the expense tracking websites and apps
