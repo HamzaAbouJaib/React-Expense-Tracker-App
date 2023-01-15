@@ -6,10 +6,12 @@ import HistoryStack from "../components/HistoryStack";
 import PageContainer from "../layout/PageContainer";
 import ExpensesContext from "../store/ExpensesContext";
 import PieChart from "../components/PieChart";
+import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
 
 const HomePage = () => {
-  const { budget } = useContext(BudgetContext);
-  const { expenses } = useContext(ExpensesContext);
+  const { getTotalAmount } = useContext(ExpenseCategoriesContext);
+  const budget = getTotalAmount("Budget");
+  const expenses = getTotalAmount("Expenses");
 
   return (
     <PageContainer>
