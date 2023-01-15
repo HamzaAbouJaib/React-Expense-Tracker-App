@@ -47,11 +47,17 @@ export function ExpenseCategoriesContextProvider({
     setCategories(categories);
   }
 
-  function getTotalExpenses() {
+  function getTotalAmount(type: string) {
     let total = 0;
-    categories.forEach((category) => {
-      if (category.label !== "Budget") total += category.amount;
-    });
+    if (type === "Expenses") {
+      categories.forEach((category) => {
+        if (category.label !== "Budget") total += category.amount;
+      });
+    } else {
+      categories.forEach((category) => {
+        if (category.label === "Budget") total += category.amount;
+      });
+    }
     return total;
   }
 
