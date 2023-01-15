@@ -21,6 +21,7 @@ type AvailableCategories = {
 type ExpenseCategoriesContextType = {
   categories: ExpenseCategory[];
   getTotalAmount: (type: string) => number;
+  resetAmount: (type: string) => void;
   setCategories: (categories: ExpenseCategory[]) => void;
   addCategory: (newCategory: ExpenseCategory) => void;
   deleteCategory: (label: string) => void;
@@ -33,6 +34,7 @@ const ExpenseCategoriesContext = createContext<ExpenseCategoriesContextType>({
     let total = 0;
     return total;
   },
+  resetAmount: (type: string) => {},
   setCategories: (categories: ExpenseCategory[]) => {},
   addCategory: (newCategory: ExpenseCategory) => {},
   deleteCategory: (label: string) => {},
@@ -157,6 +159,7 @@ export function ExpenseCategoriesContextProvider({
   const context = {
     categories: categories,
     getTotalAmount: getTotalAmount,
+    resetAmount: resetAmount,
     setCategories: setCategoriesHandler,
     addCategory: addCategoryHandler,
     deleteCategory: deleteCategory,
