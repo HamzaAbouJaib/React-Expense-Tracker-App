@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { Button, TextInput } from "@mantine/core";
 import BudgetContext from "../store/BudgetContext";
 import HistoryContext from "../store/HistoryContext";
+import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
 
 const SetBudget = () => {
-  const { setBudget } = useContext(BudgetContext);
   const { addHistoryElement } = useContext(HistoryContext);
+  const { addCategory } = useContext(ExpenseCategoriesContext);
 
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
@@ -28,7 +29,11 @@ const SetBudget = () => {
           if (value <= 0 || Number.isNaN(value)) {
             alert("Invalid Entry. Make sure the amount is greater than zero.");
           } else {
-            setBudget(value);
+            addCategory({
+              label: "Budget",
+              id: crypto.randomUUID(),
+              amount: value,
+            });
             // navigates back to home page
             navigate("/");
             addHistoryElement({
@@ -37,7 +42,7 @@ const SetBudget = () => {
               amount: value,
               type: "Budget",
               dateCreated: "", // dateCreated passes an empty string here as the actual date creation is handled in the addHisotyrElement function
-              category: "Budget"
+              category: "Budget",
             });
           }
         }}
