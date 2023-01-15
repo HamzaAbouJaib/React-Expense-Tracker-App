@@ -66,6 +66,25 @@ export function ExpenseCategoriesContextProvider({
     return total;
   }
 
+  function resetAmount(type: string) {
+    setCategories((prev) => {
+      const arr: ExpenseCategory[] = JSON.parse(JSON.stringify(prev));
+      const arr2: ExpenseCategory[] = [];
+      arr.forEach((c) => {
+        if (type === "Budget") {
+          if (c.label !== "Budget") {
+            arr2.push(c);
+          }
+        } else {
+          if (c.label === "Budget") {
+            arr2.push(c);
+          }
+        }
+      });
+      return arr2;
+    });
+  }
+
   // Adds a category to the categories state.
   // If the category already exists the amount of the category will be adjusted accordingly
   function addCategoryHandler(newCategory: ExpenseCategory) {
