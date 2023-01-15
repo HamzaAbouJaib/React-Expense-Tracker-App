@@ -22,7 +22,6 @@ import HomePage from "../pages/HomePage";
 import AddBudgetPage from "../pages/AddBudgetPage";
 import AddExpensePage from "../pages/AddExpensePage";
 import { useLocalStorage } from "@mantine/hooks";
-import DisplayCategories from "./DisplayCategories";
 import DisplayCategoriesPage from "../pages/DisplayCategoriesPage";
 
 type HistoryElement = {
