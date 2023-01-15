@@ -1,7 +1,5 @@
 import { useRef, useEffect, useContext } from "react";
-import BudgetContext from "../store/BudgetContext";
 import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
-import ExpensesContext from "../store/ExpensesContext";
 
 type drawPieArgs = {
   context: CanvasRenderingContext2D;

@@ -1,10 +1,8 @@
 import { useContext } from "react";
-import BudgetContext from "../store/BudgetContext";
 import { SimpleGrid, Text } from "@mantine/core";
 import DisplayCard from "../components/DisplayCard";
 import HistoryStack from "../components/HistoryStack";
 import PageContainer from "../layout/PageContainer";
-import ExpensesContext from "../store/ExpensesContext";
 import PieChart from "../components/PieChart";
 import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
 

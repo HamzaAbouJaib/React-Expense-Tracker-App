@@ -1,10 +1,8 @@
 import { Button, Divider, MultiSelect, Text, TextInput } from "@mantine/core";
-import { useLocalStorage } from "@mantine/hooks";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AvailableCategoriesContext from "../store/AvailableCategoriesContext";
 import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
-import ExpensesContext from "../store/ExpensesContext";
 import HistoryContext from "../store/HistoryContext";
 import DeleteCatToolTip from "./DeleteCatToolTip";
 

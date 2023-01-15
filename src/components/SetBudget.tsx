@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, TextInput } from "@mantine/core";
-import BudgetContext from "../store/BudgetContext";
 import HistoryContext from "../store/HistoryContext";
 import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
 

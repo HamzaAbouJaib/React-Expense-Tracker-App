@@ -3,7 +3,6 @@ import AddToBudget from "../components/AddToBudget";
 import SetBudget from "../components/SetBudget";
 import PageContainer from "../layout/PageContainer";
 import { useContext } from "react";
-import BudgetContext from "../store/BudgetContext";
 import ResetValueModal from "../components/ResetValueModal";
 import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
 

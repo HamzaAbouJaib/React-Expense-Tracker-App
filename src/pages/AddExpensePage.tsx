@@ -2,7 +2,6 @@ import { Divider, Text } from "@mantine/core";
 import AddToExpenses from "../components/AddToExpenses";
 import PageContainer from "../layout/PageContainer";
 import { useContext } from "react";
-import ExpensesContext from "../store/ExpensesContext";
 import ResetValueModal from "../components/ResetValueModal";
 import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
 

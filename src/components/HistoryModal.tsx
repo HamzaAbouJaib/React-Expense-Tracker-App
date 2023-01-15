@@ -1,8 +1,6 @@
 import { Button, Modal, Text } from "@mantine/core";
 import { useContext } from "react";
-import BudgetContext from "../store/BudgetContext";
 import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
-import ExpensesContext from "../store/ExpensesContext";
 import HistoryContext from "../store/HistoryContext";
 
 type HistoryModalProps = {
