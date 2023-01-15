@@ -8,7 +8,6 @@ import HistoryContext from "../store/HistoryContext";
 type ResetValueModalProps = {
   type: string;
   prevAmount: number;
-  resetFunction: (amount: number) => void;
 };
 
 type AvailableCategories = {
@@ -20,11 +19,10 @@ type AvailableCategories = {
 const ResetValueModal = ({
   type,
   prevAmount,
-  resetFunction,
 }: ResetValueModalProps) => {
   const [opened, setOpened] = useState(false);
   const { addHistoryElement } = useContext(HistoryContext);
-  const { setCategories } = useContext(ExpenseCategoriesContext);
+  const { resetAmount } = useContext(ExpenseCategoriesContext);
   const { setAvailableCategories } = useContext(AvailableCategoriesContext);
 
   const navigate = useNavigate();
@@ -56,7 +54,7 @@ const ResetValueModal = ({
             color="red"
             onClick={() => {
               // sets the value of expenses/budget to 0
-              resetFunction(0);
+              resetAmount(type);
               setOpened(false);
               addHistoryElement({
                 label: `${type} has been reset to 0`,
@@ -67,7 +65,6 @@ const ResetValueModal = ({
                 category: `${type} Reset`,
               });
               if (type === "Expenses") {
-                setCategories([]);
                 // set the isused property on all items in the available categories array to false since all categories have 0 amounts now that the expenses have been reset
                 setAvailableCategories((prev) => {
                   const arr: AvailableCategories[] = JSON.parse(
