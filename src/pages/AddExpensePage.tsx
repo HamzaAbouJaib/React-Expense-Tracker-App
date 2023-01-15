@@ -4,9 +4,11 @@ import PageContainer from "../layout/PageContainer";
 import { useContext } from "react";
 import ExpensesContext from "../store/ExpensesContext";
 import ResetValueModal from "../components/ResetValueModal";
+import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
 
 const AddExpensePage = () => {
-  const { expenses, setExpenses } = useContext(ExpensesContext);
+  const { getTotalAmount } = useContext(ExpenseCategoriesContext);
+  const expenses = getTotalAmount("Expenses");
 
   return (
     <PageContainer>
@@ -37,7 +39,6 @@ const AddExpensePage = () => {
       <Divider mt={30} mb={20} />
       <ResetValueModal
         prevAmount={expenses}
-        resetFunction={setExpenses}
         type="Expenses"
       />
     </PageContainer>
