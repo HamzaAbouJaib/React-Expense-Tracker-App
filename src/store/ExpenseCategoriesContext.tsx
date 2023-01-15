@@ -47,6 +47,14 @@ export function ExpenseCategoriesContextProvider({
     setCategories(categories);
   }
 
+  function getTotalExpenses() {
+    let total = 0;
+    categories.forEach((category) => {
+      if (category.label !== "Budget") total += category.amount;
+    });
+    return total;
+  }
+
   // Adds a category to the categories state.
   // If the category already exists the amount of the category will be adjusted accordingly
   function addCategoryHandler(newCategory: ExpenseCategory) {
