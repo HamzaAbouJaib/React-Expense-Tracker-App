@@ -27,8 +27,6 @@ const HistoryModal = ({
   category,
 }: HistoryModalProps) => {
   const { deleteHistoryElement } = useContext(HistoryContext);
-  const { addToExpenses } = useContext(ExpensesContext);
-  const { addToBudget } = useContext(BudgetContext);
   const { subtractCategoryAmount, addCategory } = useContext(
     ExpenseCategoriesContext
   );
@@ -83,10 +81,7 @@ const HistoryModal = ({
           onClick={() => {
             // based on the type of transaction adjust the budget / expense amount accordingly
             deleteHistoryElement(id);
-            if (type === "Budget") {
-              addToBudget(-1 * amount);
-            } else if (type === "Expenses Reset") {
-              addToExpenses(amount);
+            if (type === "Expenses Reset") {
               // put the returned expenses in the Uncategorized category
               addCategory({
                 label: "Uncategorized",
@@ -94,9 +89,11 @@ const HistoryModal = ({
                 id: crypto.randomUUID(),
               });
             } else if (type === "Budget Reset") {
-              addToBudget(amount);
-            } else {
-              addToExpenses(-1 * amount);
+              addCategory({
+                label: "Budget",
+                amount: amount,
+                id: crypto.randomUUID(),
+              });
             }
             // subtract the amount of the removed transaction from the category it belonged to
             subtractCategoryAmount(category, amount);
