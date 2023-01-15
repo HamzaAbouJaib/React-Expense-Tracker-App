@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Button, TextInput } from "@mantine/core";
 import BudgetContext from "../store/BudgetContext";
 import HistoryContext from "../store/HistoryContext";
+import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
 
 const AddToBudget = () => {
-  const { addToBudget } = useContext(BudgetContext);
+  const { addCategory } = useContext(ExpenseCategoriesContext);
   const { addHistoryElement } = useContext(HistoryContext);
 
   const [label, setLabel] = useState("");
@@ -40,7 +41,11 @@ const AddToBudget = () => {
               "Invalid Entries. Make sure the label is not empty and the amount is greater than zero."
             );
           } else {
-            addToBudget(value);
+            addCategory({
+              label: "Budget",
+              id: crypto.randomUUID(),
+              amount: value,
+            });
             // navigate to home page
             navigate("/");
             addHistoryElement({
