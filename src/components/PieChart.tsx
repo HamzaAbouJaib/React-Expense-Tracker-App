@@ -1,5 +1,6 @@
 import { useRef, useEffect, useContext } from "react";
 import BudgetContext from "../store/BudgetContext";
+import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
 import ExpensesContext from "../store/ExpensesContext";
 
 type drawPieArgs = {
@@ -49,8 +50,9 @@ function drawPie({ context, data }: drawPieArgs) {
 }
 
 const PieChart = () => {
-  const { budget } = useContext(BudgetContext);
-  const { expenses } = useContext(ExpensesContext);
+  const { getTotalAmount } = useContext(ExpenseCategoriesContext)
+  const expenses = getTotalAmount("Expenses")
+  const budget = getTotalAmount("Budget")
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const data = [
