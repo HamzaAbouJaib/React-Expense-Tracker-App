@@ -15,7 +15,6 @@ type AvailableCategories = {
 };
 
 const AddToExpenses = () => {
-  const { addToExpenses } = useContext(ExpensesContext);
   const { addHistoryElement } = useContext(HistoryContext);
   const { availableCategories, setAvailableCategories } = useContext(
     AvailableCategoriesContext
@@ -104,7 +103,6 @@ const AddToExpenses = () => {
               category[0] === ""
                 ? (category[0] = "Uncategorized")
                 : null;
-              addToExpenses(value);
               addCategory({
                 label: category[0],
                 amount: value,
