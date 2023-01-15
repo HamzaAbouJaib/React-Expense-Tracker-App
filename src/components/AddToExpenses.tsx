@@ -19,9 +19,7 @@ const AddToExpenses = () => {
   const { availableCategories, setAvailableCategories } = useContext(
     AvailableCategoriesContext
   );
-  const { addCategory, } = useContext(
-    ExpenseCategoriesContext
-  );
+  const { addCategory } = useContext(ExpenseCategoriesContext);
   const [label, setLabel] = useState("");
   const [value, setValue] = useState(0);
 
@@ -138,7 +136,14 @@ const AddToExpenses = () => {
             // Checks if the user has not selected a category
             if (category[0] === "") {
               alert("No category has been selected!");
-            } else { // if they have selected a category
+            } else {
+              // if they have selected a category
+
+              // Uncategorized cannot be removed
+              if (category[0] === "Uncategorized") {
+                alert("Uncategorized cannot be removed!");
+                return;
+              }
               let removed = false; // used to check if the category has been removed
               setAvailableCategories((prev) => {
                 // create a hard copy of the previous category state
