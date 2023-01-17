@@ -2,11 +2,11 @@ import { useLocalStorage } from "@mantine/hooks";
 import { createContext, ReactNode, useContext } from "react";
 import AvailableCategoriesContext from "./AvailableCategoriesContext";
 
-type ExpenseCategoriesContextProps = {
+type CategoriesContextProps = {
   children: ReactNode;
 };
 
-type ExpenseCategory = {
+type Category = {
   label: string;
   id: string;
   amount: number;
@@ -18,39 +18,39 @@ type AvailableCategories = {
   isused: string;
 };
 
-type ExpenseCategoriesContextType = {
-  categories: ExpenseCategory[];
+type CategoriesContextType = {
+  categories: Category[];
   getTotalAmount: (type: string) => number;
   resetAmount: (type: string) => void;
-  setCategories: (categories: ExpenseCategory[]) => void;
-  addCategory: (newCategory: ExpenseCategory) => void;
+  setCategories: (categories: Category[]) => void;
+  addCategory: (newCategory: Category) => void;
   deleteCategory: (label: string) => void;
   subtractCategoryAmount: (label: string, amount: number) => void;
 };
 
-const ExpenseCategoriesContext = createContext<ExpenseCategoriesContextType>({
+const CategoriesContext = createContext<CategoriesContextType>({
   categories: [],
   getTotalAmount: (type: string) => {
     let total = 0;
     return total;
   },
   resetAmount: (type: string) => {},
-  setCategories: (categories: ExpenseCategory[]) => {},
-  addCategory: (newCategory: ExpenseCategory) => {},
+  setCategories: (categories: Category[]) => {},
+  addCategory: (newCategory: Category) => {},
   deleteCategory: (label: string) => {},
   subtractCategoryAmount: (label: string, amount: number) => {},
 });
 
-export function ExpenseCategoriesContextProvider({
+export function CategoriesContextProvider({
   children,
-}: ExpenseCategoriesContextProps) {
-  const [categories, setCategories] = useLocalStorage<ExpenseCategory[]>({
+}: CategoriesContextProps) {
+  const [categories, setCategories] = useLocalStorage<Category[]>({
     key: "categories",
     defaultValue: [],
   });
   const { setAvailableCategories } = useContext(AvailableCategoriesContext);
 
-  function setCategoriesHandler(categories: ExpenseCategory[]) {
+  function setCategoriesHandler(categories: Category[]) {
     setCategories(categories);
   }
 
@@ -70,8 +70,8 @@ export function ExpenseCategoriesContextProvider({
 
   function resetAmount(type: string) {
     setCategories((prev) => {
-      const arr: ExpenseCategory[] = JSON.parse(JSON.stringify(prev));
-      const arr2: ExpenseCategory[] = [];
+      const arr: Category[] = JSON.parse(JSON.stringify(prev));
+      const arr2: Category[] = [];
       arr.forEach((c) => {
         if (type === "Budget") {
           if (c.label !== "Budget") {
@@ -89,8 +89,8 @@ export function ExpenseCategoriesContextProvider({
 
   // Adds a category to the categories state.
   // If the category already exists the amount of the category will be adjusted accordingly
-  function addCategoryHandler(newCategory: ExpenseCategory) {
-    let arr: ExpenseCategory[] = [];
+  function addCategoryHandler(newCategory: Category) {
+    let arr: Category[] = [];
     let count = 0;
     setCategories((prev) => {
       // create a hard copy of previous categories array
@@ -126,9 +126,9 @@ export function ExpenseCategoriesContextProvider({
   function subtractCategoryAmount(label: string, amount: number) {
     setCategories((prev) => {
       // create a hard copy of the previous category state
-      const arr: ExpenseCategory[] = JSON.parse(JSON.stringify(prev));
+      const arr: Category[] = JSON.parse(JSON.stringify(prev));
       // array to store cleaned version of categories
-      const arr2: ExpenseCategory[] = [];
+      const arr2: Category[] = [];
       arr.forEach((c) => {
         // if the label matches then subtract the amount
         if (c.label === label) {
@@ -167,10 +167,10 @@ export function ExpenseCategoriesContextProvider({
   };
 
   return (
-    <ExpenseCategoriesContext.Provider value={context}>
+    <CategoriesContext.Provider value={context}>
       {children}
-    </ExpenseCategoriesContext.Provider>
+    </CategoriesContext.Provider>
   );
 }
 
-export default ExpenseCategoriesContext;
+export default CategoriesContext;
