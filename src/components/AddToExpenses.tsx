@@ -2,7 +2,7 @@ import { Button, Divider, MultiSelect, Text, TextInput } from "@mantine/core";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AvailableCategoriesContext from "../store/AvailableCategoriesContext";
-import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
+import CategoriesContext from "../store/CategoriesContext";
 import HistoryContext from "../store/HistoryContext";
 import DeleteCatToolTip from "./DeleteCatToolTip";
 
@@ -17,7 +17,7 @@ const AddToExpenses = () => {
   const { availableCategories, setAvailableCategories } = useContext(
     AvailableCategoriesContext
   );
-  const { addCategory } = useContext(ExpenseCategoriesContext);
+  const { addCategory } = useContext(CategoriesContext);
   const [label, setLabel] = useState("");
   const [value, setValue] = useState(0);
 

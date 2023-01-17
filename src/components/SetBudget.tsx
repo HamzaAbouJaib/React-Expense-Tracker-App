@@ -2,11 +2,11 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, TextInput } from "@mantine/core";
 import HistoryContext from "../store/HistoryContext";
-import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
+import CategoriesContext from "../store/CategoriesContext"
 
 const SetBudget = () => {
   const { addHistoryElement } = useContext(HistoryContext);
-  const { addCategory } = useContext(ExpenseCategoriesContext);
+  const { addCategory } = useContext(CategoriesContext);
 
   const [value, setValue] = useState(0);
   const navigate = useNavigate();

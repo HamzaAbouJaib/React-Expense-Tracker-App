@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { SimpleGrid } from "@mantine/core";
 import DisplayCard from "./DisplayCard";
-import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
+import CategoriesContext from "../store/CategoriesContext";
 
 const DisplayCategories = () => {
-  const { categories } = useContext(ExpenseCategoriesContext);
+  const { categories } = useContext(CategoriesContext);
 
   return (
     <SimpleGrid cols={4} style={{ justifyContent: "center" }}>

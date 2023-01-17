@@ -4,10 +4,10 @@ import DisplayCard from "../components/DisplayCard";
 import HistoryStack from "../components/HistoryStack";
 import PageContainer from "../layout/PageContainer";
 import PieChart from "../components/PieChart";
-import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
+import CategoriesContext from "../store/CategoriesContext";
 
 const HomePage = () => {
-  const { getTotalAmount } = useContext(ExpenseCategoriesContext);
+  const { getTotalAmount } = useContext(CategoriesContext);
   const budget = getTotalAmount("Budget");
   const expenses = getTotalAmount("Expenses");
 

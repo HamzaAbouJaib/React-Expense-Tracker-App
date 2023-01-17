@@ -2,7 +2,7 @@ import { Button, Flex, Modal, Text } from "@mantine/core";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AvailableCategoriesContext from "../store/AvailableCategoriesContext";
-import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
+import CategoriesContext from "../store/CategoriesContext";
 import HistoryContext from "../store/HistoryContext";
 
 type ResetValueModalProps = {
@@ -16,13 +16,10 @@ type AvailableCategories = {
   isused: string;
 };
 
-const ResetValueModal = ({
-  type,
-  prevAmount,
-}: ResetValueModalProps) => {
+const ResetValueModal = ({ type, prevAmount }: ResetValueModalProps) => {
   const [opened, setOpened] = useState(false);
   const { addHistoryElement } = useContext(HistoryContext);
-  const { resetAmount } = useContext(ExpenseCategoriesContext);
+  const { resetAmount } = useContext(CategoriesContext);
   const { setAvailableCategories } = useContext(AvailableCategoriesContext);
 
   const navigate = useNavigate();
@@ -47,7 +44,9 @@ const ResetValueModal = ({
             lineHeight: 1.3,
           })}
         >
-          This action can be later undone by deleting the transaction. {type === "Expenses" && "However the expense categories will return and the amount will be put under Uncategorized"}
+          This action can be later undone by deleting the transaction.{" "}
+          {type === "Expenses" &&
+            "However the expense categories will return and the amount will be put under Uncategorized"}
         </Text>
         <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
           <Button

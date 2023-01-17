@@ -2,7 +2,7 @@ import { Paper } from "@mantine/core";
 import { MantineProvider } from "@mantine/core";
 import MainAppShell from "./components/MainAppShell";
 import { AvailableCategoriesContextProvider } from "./store/AvailableCategoriesContext";
-import { ExpenseCategoriesContextProvider } from "./store/ExpenseCategoriesContext";
+import { ExpenseCategoriesContextProvider } from "./store/CategoriesContext";
 import { HistoryContextProvider } from "./store/HistoryContext";
 
 export default function App() {
@@ -18,11 +18,11 @@ export default function App() {
       <Paper>
         {/* Contexts */}
         <AvailableCategoriesContextProvider>
-              <HistoryContextProvider>
-                <ExpenseCategoriesContextProvider>
-                  <MainAppShell />
-                </ExpenseCategoriesContextProvider>
-              </HistoryContextProvider>
+          <HistoryContextProvider>
+            <ExpenseCategoriesContextProvider>
+              <MainAppShell />
+            </ExpenseCategoriesContextProvider>
+          </HistoryContextProvider>
         </AvailableCategoriesContextProvider>
       </Paper>
     </MantineProvider>

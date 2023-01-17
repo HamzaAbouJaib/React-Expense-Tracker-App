@@ -1,6 +1,6 @@
 import { Button, Modal, Text } from "@mantine/core";
 import { useContext } from "react";
-import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
+import CategoriesContext from "../store/CategoriesContext";
 import HistoryContext from "../store/HistoryContext";
 
 type HistoryModalProps = {
@@ -26,7 +26,7 @@ const HistoryModal = ({
 }: HistoryModalProps) => {
   const { deleteHistoryElement } = useContext(HistoryContext);
   const { subtractCategoryAmount, addCategory } = useContext(
-    ExpenseCategoriesContext
+    CategoriesContext
   );
 
   return (

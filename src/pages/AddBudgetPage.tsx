@@ -4,10 +4,10 @@ import SetBudget from "../components/SetBudget";
 import PageContainer from "../layout/PageContainer";
 import { useContext } from "react";
 import ResetValueModal from "../components/ResetValueModal";
-import ExpenseCategoriesContext from "../store/ExpenseCategoriesContext";
+import CategoriesContext from "../store/CategoriesContext";
 
 const AddBudgetPage = () => {
-  const { getTotalAmount } = useContext(ExpenseCategoriesContext);
+  const { getTotalAmount } = useContext(CategoriesContext);
   const budget = getTotalAmount("Budget");
 
   return (
@@ -60,8 +60,7 @@ const AddBudgetPage = () => {
       >
         Adds on to your current income / budget amount.
       </Text>
-      <AddToBudget
-      />
+      <AddToBudget />
       <Divider mt={30} mb={20} />
       <ResetValueModal prevAmount={budget} type="Budget" />
     </PageContainer>
