@@ -11,7 +11,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { useState } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CgCalculator } from "react-icons/cg";
 import { AiOutlineHome } from "react-icons/ai";
 import { MdAttachMoney } from "react-icons/md";
@@ -89,7 +89,7 @@ const MainAppShell = () => {
                 <NavigationLink
                   label="View Spending in Categories"
                   icon={<BsBarChartLine />}
-                  link="/chartView"
+                  link="/categories"
                 />
               </Navbar>
             }
@@ -142,7 +142,7 @@ const MainAppShell = () => {
               <Route path="/" element={<HomePage />} />
               <Route path="/newExpense" element={<AddExpensePage />} />
               <Route path="/newBudget" element={<AddBudgetPage />} />
-              <Route path="/chartView" element={<DisplayCategoriesPage />} />
+              <Route path="/categories" element={<DisplayCategoriesPage />} />
             </Routes>
           </AppShell>
         </BrowserRouter>
