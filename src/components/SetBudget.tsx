@@ -6,7 +6,7 @@ import CategoriesContext from "../store/CategoriesContext"
 
 const SetBudget = () => {
   const { addHistoryElement } = useContext(HistoryContext);
-  const { addCategory } = useContext(CategoriesContext);
+  const { addCategory, getTotalAmount } = useContext(CategoriesContext);
 
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
@@ -28,6 +28,12 @@ const SetBudget = () => {
           if (value <= 0 || Number.isNaN(value)) {
             alert("Invalid Entry. Make sure the amount is greater than zero.");
           } else {
+            const budget = getTotalAmount("Budget");
+            addCategory({
+              label: "Budget",
+              id: crypto.randomUUID(),
+              amount: -1*budget,
+            });
             addCategory({
               label: "Budget",
               id: crypto.randomUUID(),
